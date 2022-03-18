@@ -27,15 +27,10 @@ fn main() {
 
     eprintln!("LUL: {}", dst.display());
 
-    if target.contains("windows") {
-        if is_debug {
-            println!("cargo:rustc-link-search=native={}/build/Debug", dst.display());
-        } else {
-            println!("cargo:rustc-link-search=native={}/build/Release", dst.display());
-        }
-        println!("cargo:rustc-link-lib=dylib=winmm");
-    } else {
-        println!("cargo:rustc-link-search=native={}/build", dst.display());
-    }
     println!("cargo:rustc-link-lib=enet");
+    println!("cargo:rustc-link-search=native={}/build", dst.display());
+    if target.contains("windows") {
+        println!("cargo:rustc-link-lib=dylib=winmm");
+        println!("cargo:rustc-link-lib=dylib=ws2_32");
+    }
 }
