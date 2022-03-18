@@ -37,5 +37,5 @@ fn main() {
     } else {
         println!("cargo:rustc-link-search=native={}/build", dst.display());
     }
-    println!("cargo:rustc-link-lib=static=enet");
+    println!("cargo:rustc-link-lib=enet");
 }
